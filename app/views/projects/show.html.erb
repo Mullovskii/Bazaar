@@ -1,0 +1,379 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<%= link_to '< К списку проектов', projects_path %>
+
+<br>
+<br>
+
+<h1>
+  <%= @project.name %>
+</h1>
+
+
+<p>
+
+  <%= simple_format(@project.link).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+
+</p>
+<br>
+
+<div class="status">
+<p>
+  <ul>
+    <li>
+      
+        Текущий раунд:
+      
+    </li>
+    <li>
+      <b id="black">
+        <%= @project.status %>
+      </b>
+    </li>
+  </ul>
+  
+  <ul>
+    <li>
+        
+        Позиция фонда:
+      
+    </li>
+    <li>
+      <b id="black">
+        <%= @project.relation %>
+      </b>
+    </li>
+  </ul>
+</div>
+<br>
+<br>
+
+
+
+<div class="vote">
+<ul>
+<% @project.votes.each do |vote| %>
+  <li>
+    <%= vote.user.email %>:
+    <b id="black">
+    <%= vote.status %>  
+    </b>
+    
+    <% if current_user.votes.where(id: vote.id).take %>
+
+      <%= link_to "(Удалить)", vote, method: :delete %>
+    <%end%>
+
+  </li>
+<% end %>
+</ul>
+</div>
+
+
+<div class="col-md-3">
+<% unless current_user.votes.where(project_id: @project.id).take %>
+
+  <%= simple_form_for Vote.new do |form| %>
+
+<%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :project_id, value: @project.id %>
+  
+      <%= form.input :status, collection: Vote.statuses.keys, :as => :select, label: "Проголосовать:" %>
+  
+  
+      <%= form.submit "проголосовать", :class=>"btn"  %>
+  
+  
+  
+  <% end %>
+<% end %>
+
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+  <h5>
+    Резюме
+  </h5>
+
+<p>
+  <b>
+    Кратко о проекте:
+  </b>
+  
+  <%= simple_format(@project.description).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Заключение:
+  </b>
+  <%= simple_format(@project.summary).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Плюсы:
+  </b>
+  <%= simple_format(@project.pros).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Минусы:
+  </b>
+  <%= simple_format(@project.cons).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<br>
+
+<h5>
+    Инвесторы
+</h5>
+
+<p>
+  <b>
+    Инвесторы:
+  </b>
+  <%= simple_format(@project.investors).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<br>
+
+<h5>
+    О продукте
+</h5>
+
+<p>
+  <b>
+    Подробно о продукте:
+  </b>
+  <%= simple_format(@project.product).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Решаемая проблема:
+  </b>
+  
+  <%= simple_format(@project.problem).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Статус продукта:
+  </b>
+  
+  <%= simple_format(@project.product_status).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Roadmap продукта:
+  </b>
+  
+  <%= simple_format(@project.product_schedule).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  
+  <%= simple_format(@project.white_paper).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Статус Git:
+  </b>
+  <%= simple_format(@project.git).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+  
+</p>
+
+<br>
+  <h5>
+    Конкуренты
+  </h5>
+
+
+<p>
+  <b>
+    Конкуренты:
+  </b>
+  
+  <%= simple_format(@project.comptetitors).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<br>
+
+  <h5>
+    Токеномика
+  </h5>
+
+<p>
+   <b>
+    Хардкэп, цены, объемы:
+  
+  <%= simple_format(@project.tokenomics).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Использование токена:
+  </b>
+  <%= simple_format(@project.token_use).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<br>
+<h5>
+    Каналы
+  </h5>
+
+<p>
+  <b>
+    Сайт:
+  </b>
+  
+  <%= simple_format(@project.website).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Telegram:
+  </b>
+  <%= simple_format(@project.telegram).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+  
+</p>
+
+<p>
+  <b>
+    Twitter:
+  </b>
+  <%= simple_format(@project.twitter).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Reddit:
+  </b>
+  <%= simple_format(@project.reddit).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Bitcointalk:
+  </b>
+  
+  <%= simple_format(@project.bitcointalk).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Medium:
+  </b>
+  <%= simple_format(@project.medium).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    Slack:
+  </b>
+  <%= simple_format(@project.slack).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<br>
+
+  <h5>
+    Хайп
+  </h5>
+
+<p>
+  <b>
+    Уровень хайпа:
+  </b>
+  <%= simple_format(@project.hype_summary).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+   <b>
+    ico_drops:
+  </b>
+  <%= simple_format(@project.ico_drops).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+
+
+</p>
+
+<p>
+  <b>
+    ico_bench:
+  </b>
+  <%= simple_format(@project.ico_bench).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    ico_rating:
+  </b>
+  <%= simple_format(@project.ico_rating).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+  <b>
+    ico_check:
+  </b>
+  <%= simple_format(@project.ico_check).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+
+</p>
+
+<p>
+  <b>
+    top_7_ico:
+  </b>
+  <%= simple_format(@project.top_7_ico).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<p>
+   <b>
+    very_high_ico:
+  </b>
+  <%= simple_format(@project.very_high_ico).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+ <br>
+
+  <h5>
+    Команда
+  </h5>
+
+  <p>
+    <b>
+    О команде:
+  </b>
+  <%= simple_format(@project.team_description).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+  
+</p>
+
+<p>
+  <b>
+    Активность команды:
+  </b>
+  <%= simple_format(@project.team_ativity).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+</p>
+
+<br>
+<br>
+<br>
+
+
+<%= link_to 'Изменить', edit_project_path(@project) %> |
+<%= link_to '< К списку проектов', projects_path %>
+
+<br>
+<br>
+<br>
+
+
+</div>

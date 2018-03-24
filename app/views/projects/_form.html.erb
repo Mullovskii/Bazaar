@@ -1,0 +1,206 @@
+<%= simple_form_for @project do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.input :name, placeholder: "Название", label: false%>
+  </div>
+
+  <div class="field">
+    <%= form.input :link, placeholder: "Ссылка", label: false%>
+  </div>
+
+  <div class="field">
+    <%= form.input :status, collection: Project.statuses.keys, label: "Инвестиционный раунд" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :relation, collection: Project.relations.keys, label: "Позиция фонда" %>
+  </div>
+
+<br>
+  <h5>
+    Инвесторы
+  </h5>
+
+  <div class="field">
+    <%= form.input :investors, placeholder: "Инвесторы", label: "Инвесторы" %>
+  </div>
+
+<br>
+
+
+  <div class="field">
+    <%= form.input :description, placeholder: "Кратко о проекте", label: "Кратко о проекте" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :summary, placeholder: "Заключение", label: "Заключение" %>
+    </div>
+
+  <div class="field">
+    <%= form.input :pros, placeholder: "Плюсы", label: "Плюсы" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :cons, placeholder: "Минусы", label: "Минусы" %>
+  </div>
+
+
+<br>
+
+  <h5>
+    О продукте
+  </h5>
+
+
+  <div class="field">
+    <%= form.input :product, placeholder: "Подробное описание продукта", label: "Подробное описание продукта" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :problem, placeholder: "Какую проблему решает", label: "Какую проблему решает" %>
+  </div>
+
+   <div class="field">
+    <%= form.input :product_status, placeholder: "Готовность продукта", label: "Готовность продукта" %>
+  </div>
+
+    <div class="field">
+    <%= form.input :product_schedule, placeholder: "Roadmap по продукту", label: "Roadmap по продукту" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :white_paper, placeholder: "Впечатление от Whitepaper", label: "Впечатление от Whitepaper" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :git, placeholder: "Ссылка и статус Git", label: "Ссылка и статус Git" %>
+  </div>
+
+<br>
+  <h5>
+    Конкуренты
+  </h5>
+
+  <div class="field">
+    <%= form.input :comptetitors, placeholder: "Конкуренты", label: "Конкуренты" %>
+  </div>
+
+<br>
+
+  <h5>
+    Токеномика
+  </h5>
+
+
+  <div class="field">
+    <%= form.input :tokenomics, placeholder: "Цены, объемы по каждым из этапов продаж", label: "Цены, объемы по каждым из этапов продаж" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :token_use, placeholder: "Использование токена в продукте", label: "Использование токена в продукте" %>
+  </div>
+
+<br>
+
+  <h5>
+    Каналы
+  </h5>
+
+  <div class="field">
+    <%= form.input :website, placeholder: "Ссылка на сайт и описание", label: "Ссылка на сайт и описание" %>
+  </div>
+  
+  <div class="field">
+    <%= form.input :telegram, placeholder: "Ссылка на Telegram и описание", label: "Ссылка на Telegram и описание" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :twitter, placeholder: "Ссылка на Twitter и описание", label: "Ссылка на Twitter и описание" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :reddit, placeholder: "Ссылка на Reddit и описание", label: "Ссылка на Reddit и описание" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :bitcointalk, placeholder: "Ссылка на Bitcointalk и описание", label: "Ссылка на Bitcointalk и описание" %>
+  </div>
+
+  <div class="field">
+    <%= form.input :medium, placeholder: "Ссылка на Medium и описание", label: "Ссылка на Medium и описание" %>
+  </div>
+
+   <div class="field">
+    <%= form.input :slack, placeholder: "Ссылка на Slack и описание", label: "Ссылка на Slack и описание" %>
+    </div>
+
+  <br>
+
+  <h5>
+    Хайп
+  </h5>
+
+   <div class="field">
+    <%= form.input :hype_summary, placeholder: "Резюме: насколько хайповый проект", label: "Резюме: насколько хайповый проект" %>
+    </div>
+
+   <div class="field">
+    <%= form.input :ico_drops, placeholder: "Ссылка на Ico drops и рейтинг", label: "Ссылка на Ico drops и рейтинг" %>
+    </div>
+
+    <div class="field">
+    <%= form.input :ico_bench, placeholder: "Ссылка на Ico bench и рейтинг", label: "Ссылка на Ico bench и рейтинг" %>
+    </div>
+
+    <div class="field">
+    <%= form.input :ico_rating, placeholder: "Ссылка на Ico rating и рейтинг", label: "Ссылка на Ico rating и рейтинг" %>
+    </div>
+
+    <div class="field">
+    <%= form.input :ico_check, placeholder: "Ссылка на Ico check и рейтинг", label: "Ссылка на Ico check и рейтинг" %>
+    </div>
+
+    <div class="field">
+    <%= form.input :top_7_ico, placeholder: "Ссылка на top_7_ico и рейтинг", label: "Ссылка на top_7_ico и рейтинг" %>
+    </div>
+
+     <div class="field">
+    <%= form.input :very_high_ico, placeholder: "Ссылка на Very high ICO и рейтинг", label: "Ссылка на Very high ICO и рейтинг" %>
+    </div>
+
+
+    <br>
+
+  <h5>
+    Команда
+  </h5>
+
+   <div class="field">
+    <%= form.input :team_description, placeholder: "Люди, профили, опыт, резюме", label: "Люди, профили, опыт, резюме" %>
+    </div>
+
+    <div class="field">
+    <%= form.input :team_ativity, placeholder: "Активность команды", label: "Активность команды" %>
+    </div>
+
+
+   
+    <%= form.submit "добавить", :class=>"btn"  %>
+
+<% end %>
+<br>
+<br>
+<br>
+<br>

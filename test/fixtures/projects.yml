@@ -1,0 +1,67 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  product: MyText
+  website: MyText
+  telegram: MyText
+  twitter: MyText
+  reddit: MyText
+  bitcointalk: MyText
+  medium: MyText
+  slack: MyText
+  git: MyText
+  white_paper: MyText
+  ico_drops: MyText
+  ico_check: MyText
+  top_7_ico: MyText
+  very_high_ico: MyText
+  product_status: MyText
+  product_schedule: MyText
+  team_ativity: MyText
+  team_description: MyText
+  tokenomics: MyText
+  token_use: MyText
+  comptetitors: MyText
+  hype_summary: MyText
+  ico_bench: MyText
+  ico_rating: MyText
+  ico_tracker: MyText
+  summary: MyText
+  pros: MyText
+  cons: MyText
+  status: 1
+
+two:
+  name: MyString
+  description: MyText
+  product: MyText
+  website: MyText
+  telegram: MyText
+  twitter: MyText
+  reddit: MyText
+  bitcointalk: MyText
+  medium: MyText
+  slack: MyText
+  git: MyText
+  white_paper: MyText
+  ico_drops: MyText
+  ico_check: MyText
+  top_7_ico: MyText
+  very_high_ico: MyText
+  product_status: MyText
+  product_schedule: MyText
+  team_ativity: MyText
+  team_description: MyText
+  tokenomics: MyText
+  token_use: MyText
+  comptetitors: MyText
+  hype_summary: MyText
+  ico_bench: MyText
+  ico_rating: MyText
+  ico_tracker: MyText
+  summary: MyText
+  pros: MyText
+  cons: MyText
+  status: 1

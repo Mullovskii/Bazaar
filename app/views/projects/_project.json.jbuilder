@@ -1,0 +1,2 @@
+json.extract! project, :id, :name, :description, :product, :website, :telegram, :twitter, :reddit, :bitcointalk, :medium, :slack, :git, :white_paper, :ico_drops, :ico_check, :top_7_ico, :very_high_ico, :product_status, :product_schedule, :team_ativity, :team_description, :tokenomics, :token_use, :comptetitors, :hype_summary, :ico_bench, :ico_rating, :ico_tracker, :summary, :pros, :cons, :status, :created_at, :updated_at
+json.url project_url(project, format: :json)
