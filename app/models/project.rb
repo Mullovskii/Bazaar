@@ -2,8 +2,8 @@ class Project < ApplicationRecord
 	
 	has_many :votes
 
-	enum status: [ 'Private sale', 'Pre-sale', 'Crowdsale', 'Development', 'Production', 'Exchange']
-	enum relation: [ 'Анализируем', 'Вошли', 'Отказали']
+	enum status: [ 'Private sale', 'Pre-sale', 'Pre-sale завершен', 'Crowdsale', 'Development', 'Production', 'Exchange']
+	enum relation: [ 'Анализируем', 'Голосуем', 'Вошли', 'Отказали']
 
 
 
