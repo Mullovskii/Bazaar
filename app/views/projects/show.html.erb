@@ -50,6 +50,9 @@
 <br>
 
 
+<h5>
+    Голосование
+</h5>
 
 <div class="vote">
 <ul>
@@ -94,8 +97,7 @@
 
 <br>
 <br>
-<br>
-<br>
+
 
   <h5>
     Резюме
@@ -205,6 +207,7 @@
   </b>
   
   <%= simple_format(@project.comptetitors).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
+
 </p>
 
 <br>
@@ -216,7 +219,8 @@
 <p>
    <b>
     Хардкэп, цены, объемы:
-  
+    </b>
+
   <%= simple_format(@project.tokenomics).gsub(URI.regexp, '<a href="\0">\0</a>').html_safe %>
 </p>
 
